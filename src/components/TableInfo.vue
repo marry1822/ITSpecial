@@ -1,15 +1,11 @@
 <template>
   <div>
-    <div>id: {{ infoItems.id }}</div>
-    <div>lastName: {{ infoItems.lastName }}</div>
-    <div>email: {{ infoItems.email }}</div>
-    <div>phone: {{ infoItems.phone }}</div>
-    <div>adress: {{ infoItems.adress }}</div>
-    <div>streetAddress: {{ infoItems.adress.streetAddress }}</div>
-    <div>city: {{ infoItems.adress.city }}</div>
-    <div>state: {{ infoItems.adress.state }}</div>
-    <div>zip: {{ infoItems.adress.zip }}</div>
-    <div>description: {{ infoItems.description }}</div>
+    <div>User selected: {{ infoItems.lastName }}</div>
+    <div>Description: {{ infoItems.description }}</div>
+    <div>Address: {{ infoItems.adress.streetAddress }}</div>
+    <div>City: {{ infoItems.adress.city }}</div>
+    <div>State: {{ infoItems.adress.state }}</div>
+    <div>Zip: {{ infoItems.adress.zip }}</div>
   </div>
 </template>
 

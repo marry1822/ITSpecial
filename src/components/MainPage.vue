@@ -2,7 +2,7 @@
   <div>
     <Preloader v-if="!info.length" />
     <div v-else>
-      <Table />
+      <Table :infoItems="info" />
       <TableInfo :infoItems="info[0]" />
     </div>
   </div>
