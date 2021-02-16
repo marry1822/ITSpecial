@@ -3,7 +3,7 @@
     <Preloader v-if="!info.length" />
     <div v-else>
       <Table :infoItems="info" />
-      <TableInfo :infoItems="info[0]" />
+      <TableInfo />
     </div>
   </div>
 </template>
@@ -13,10 +13,12 @@ import { mapActions, mapGetters } from "vuex";
 import Table from "./Table";
 import TableInfo from "./TableInfo";
 import Preloader from "./Preloader";
+
 export default {
   name: "MainPage",
   data: () => ({
-    info: []
+    info: [],
+    infoClicked: {}
   }),
   components: { Table, TableInfo, Preloader },
   mounted() {

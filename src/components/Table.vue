@@ -1,35 +1,21 @@
 <template>
   <div>
+    <BFormInput
+      id="filter-input"
+      v-model="filter"
+      type="search"
+      placeholder="Type to Search"
+    />
     <div>
-      <BTable striped hover :items="paginatedData" :fields="fields" />
+      <BTable
+        bordered
+        hover
+        :items="paginatedData"
+        :fields="fields"
+        :filter="filter"
+        @filtered="onFiltered"
+      />
     </div>
-    <!-- <div>
-      <table class="sortable">
-        <thead>
-          <tr>
-            <th data-sort="id" class="">ID</th>
-            <th data-sort="lastName" class="">Last name</th>
-            <th data-sort="email" class="">Email</th>
-            <th data-sort="phone" class="">Phone</th>
-            <th data-sort="address" class="">Address</th>
-            <th data-sort="description" class="">Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="(item, index) in paginatedData" :key="index">
-            <td>{{ item.id }}</td>
-            <td>{{ item.lastName }}</td>
-            <td>{{ item.email }}</td>
-            <td>{{ item.phone }}</td>
-            <td>
-              {{ item.adress.streetAddress }}, {{ item.adress.city }},
-              {{ item.adress.state }}, {{ item.adress.zip }}
-            </td>
-            <td>{{ item.description }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div> -->
     <div class="catalog-pagination d-flex justify-content-center">
       <BPagination
         v-model="currentPage"
@@ -39,7 +25,7 @@
         size="sm"
         prev-text="Prev"
         next-text="Next"
-        @change="onClick"
+        @change="onPageChange"
       />
     </div>
   </div>
@@ -78,7 +64,10 @@ export default {
       }
     ],
     currentPage: 1,
-    perPage: 25
+    perPage: 25,
+    filter: null,
+    filterOn: [],
+    totalRows: 1
   }),
   props: {
     infoItems: {
@@ -87,8 +76,12 @@ export default {
     }
   },
   methods: {
-    onClick() {
+    onPageChange() {
       window.scrollTo(0, 0);
+    },
+    onFiltered(filteredItems) {
+      this.totalRows = filteredItems.length;
+      this.currentPage = 1;
     }
   },
   computed: {
@@ -100,6 +93,12 @@ export default {
     },
     total() {
       return this.infoItems.length;
+    }
+  },
+  watch: {
+    infoItems: {
+      immediate: true,
+      handler() {}
     }
   }
 };

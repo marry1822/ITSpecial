@@ -1,11 +1,11 @@
 <template>
   <div>
-    <div>User selected: {{ infoItems.lastName }}</div>
-    <div>Description: {{ infoItems.description }}</div>
-    <div>Address: {{ infoItems.adress.streetAddress }}</div>
-    <div>City: {{ infoItems.adress.city }}</div>
-    <div>State: {{ infoItems.adress.state }}</div>
-    <div>Zip: {{ infoItems.adress.zip }}</div>
+    <!-- <div>User selected: {{ selectedUserInfo.lastName }}</div>
+    <div>Description: {{ selectedUserInfo.description }}</div>
+    <div>Address: {{ selectedUserInfo.adress.streetAddress }}</div>
+    <div>City: {{ selectedUserInfo.adress.city }}</div>
+    <div>State: {{ selectedUserInfo.adress.state }}</div>
+    <div>Zip: {{ selectedUserInfo.adress.zip }}</div> -->
   </div>
 </template>
 
@@ -15,7 +15,7 @@ import { mapGetters } from "vuex";
 export default {
   name: "TableInfo",
   props: {
-    infoItems: {
+    selectedUserInfo: {
       type: Object,
       default: () => {}
     }
