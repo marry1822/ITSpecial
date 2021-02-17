@@ -25,7 +25,9 @@ export default {
 .lds-spinner {
   color: official;
   display: inline-block;
-  position: relative;
+  position: fixed;
+  top: 50%;
+  left: 50%;
   width: 80px;
   height: 80px;
 }

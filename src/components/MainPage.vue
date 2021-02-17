@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <Preloader v-if="!info.length" />
+  <div class="main-page-wrapper d-flex flex-column justify-content-center">
+    <div v-if="!info.length"><Preloader /></div>
     <div v-else>
       <Table :infoItems="info" />
       <TableInfo />

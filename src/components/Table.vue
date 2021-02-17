@@ -14,6 +14,7 @@
         <BTable
           bordered
           hover
+          align="fill"
           :items="paginatedData"
           :fields="fields"
           :filter="filter"
@@ -21,7 +22,12 @@
           :small="small"
           :head-variant="headVariant"
           @row-clicked="onRowSelected"
-        />
+        >
+          <template #cell(adress)="data">
+            {{ data.item.adress.streetAddress }}, {{ data.item.adress.city }},
+            {{ data.item.adress.state }}, {{ data.item.adress.zip }}
+          </template>
+        </BTable>
       </div>
       <div class="wrapper-pagination d-flex justify-content-center">
         <BPagination
@@ -40,7 +46,7 @@
 </template>
 
 <script>
-import { mapActions} from "vuex";
+import { mapActions } from "vuex";
 
 export default {
   name: "Table",
@@ -56,7 +62,7 @@ export default {
       },
       {
         key: "email",
-        sortable: false
+        sortable: true
       },
       {
         key: "phone",
@@ -65,11 +71,11 @@ export default {
       {
         label: "Address",
         key: "adress",
-        sortable: false
+        sortable: true
       },
       {
         key: "description",
-        sortable: false
+        sortable: true
       }
     ],
     currentPage: 1,
@@ -120,7 +126,7 @@ export default {
 
 <style>
 .wrapper-container {
-  max-width: 85%;
+  max-width: 80%;
 }
 .wrapper-container div:nth-child(n) {
   margin-bottom: 20px;
