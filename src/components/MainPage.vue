@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from "vuex";
+import { mapActions } from "vuex";
 import Table from "./Table";
 import TableInfo from "./TableInfo";
 import Preloader from "./Preloader";
@@ -17,8 +17,7 @@ import Preloader from "./Preloader";
 export default {
   name: "MainPage",
   data: () => ({
-    info: [],
-    infoClicked: {}
+    info: []
   }),
   components: { Table, TableInfo, Preloader },
   mounted() {
@@ -31,9 +30,6 @@ export default {
     setInfo(data) {
       this.SET_INFO_FROM_API_TO_STATE(data);
     }
-  },
-  computed: {
-    ...mapGetters(["INFO"])
   }
 };
 </script>

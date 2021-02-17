@@ -1,11 +1,11 @@
 <template>
-  <div>
-    <!-- <div>User selected: {{ selectedUserInfo.lastName }}</div>
-    <div>Description: {{ selectedUserInfo.description }}</div>
-    <div>Address: {{ selectedUserInfo.adress.streetAddress }}</div>
-    <div>City: {{ selectedUserInfo.adress.city }}</div>
-    <div>State: {{ selectedUserInfo.adress.state }}</div>
-    <div>Zip: {{ selectedUserInfo.adress.zip }}</div> -->
+  <div v-if="this.SELECTED_ROW_INFO.adress">
+    <div>User selected: {{ this.SELECTED_ROW_INFO.lastName }}</div>
+    <div>Description: {{ this.SELECTED_ROW_INFO.description }}</div>
+    <div>Address: {{ this.SELECTED_ROW_INFO.adress.streetAddress }}</div>
+    <div>City: {{ this.SELECTED_ROW_INFO.adress.city }}</div>
+    <div>State: {{ this.SELECTED_ROW_INFO.adress.state }}</div>
+    <div>Zip: {{ this.SELECTED_ROW_INFO.adress.zip }}</div>
   </div>
 </template>
 
@@ -14,14 +14,8 @@ import { mapGetters } from "vuex";
 
 export default {
   name: "TableInfo",
-  props: {
-    selectedUserInfo: {
-      type: Object,
-      default: () => {}
-    }
-  },
   computed: {
-    ...mapGetters(["INFO"])
+    ...mapGetters(["SELECTED_ROW_INFO"])
   }
 };
 </script>

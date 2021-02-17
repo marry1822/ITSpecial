@@ -3,17 +3,24 @@ import Vue from "vue";
 import Vuex from "vuex";
 import mutations from "./mutations";
 
-const { SET_INFO_FROM_API_TO_STATE } = mutations;
+const {
+	SET_INFO_FROM_API_TO_STATE,
+	SET_SELECTED_ROW_INFO_TO_STATE,
+} = mutations;
 
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
 	state: {
 		info: [],
+		selectedRowInfo: {},
 	},
 	getters: {
 		INFO(state) {
 			return state.info;
+		},
+		SELECTED_ROW_INFO(state) {
+			return state.selectedRowInfo;
 		},
 	},
 	actions: {
@@ -27,10 +34,16 @@ const store = new Vuex.Store({
 					return info;
 				});
 		},
+		GET_SELECTED_ROW_INFO({ commit}, selectedRowInfo) {
+			commit("SET_SELECTED_ROW_INFO_TO_STATE", selectedRowInfo);
+		},
 	},
 	mutations: {
 		[SET_INFO_FROM_API_TO_STATE](state, info) {
 			state.info = info;
+		},
+		[SET_SELECTED_ROW_INFO_TO_STATE](state, selectedRowInfo) {
+			state.selectedRowInfo = selectedRowInfo;
 		},
 	},
 });
